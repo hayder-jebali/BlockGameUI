@@ -1,0 +1,24 @@
+<div *ngIf="isConnectedToBlockchain" id="connectedblock">
+  <p id="title-account">Your account information</p>
+  <mat-card>
+      <p id="wallet-address">
+        Your wallet address : <strong>{{walletAddress}}</strong>
+      </p>
+  </mat-card>
+  <mat-card>
+      <p>
+        Your balance : <img src="/assets/logo.png" id="image-token" /> <strong>{{walletBalance}}</strong> Wecoins (WMC)
+      </p>
+  </mat-card>
+
+  <mat-card>
+      <p>
+        Your QR Code : <br/><img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl={{walletAddress}}&choe=UTF-8" />
+      </p>
+  </mat-card>
+
+</div>
+
+<div *ngIf="!isConnectedToBlockchain" id="notconnectedmessage">
+  You need to install a Dapp browser / app, or if using browser desktop, install <a href="https://metamask.io/">Metamask plugin</a>
+</div>

@@ -1,0 +1,36 @@
+<div *ngIf="isConnectedToBlockchain" id="connectedblock">
+    <p id="title-account">Send wecoins</p>
+    <mat-card>
+      <form #sendform="ngForm" (ngSubmit)="send()">
+        <mat-form-field>
+            <input matInput  placeholder="Wallet Address" name="walletAddress" [(ngModel)]="walletAddress" required/>
+            <mat-hint>
+              Type the recipient wallet address.
+            </mat-hint>
+          </mat-form-field>
+    
+          <mat-form-field>
+              <input matInput  placeholder="Amount" name="amount" [(ngModel)]="amount" type="number" required/>   
+              <mat-hint>
+                The amount of Wecoins.
+              </mat-hint>             
+          </mat-form-field>
+    
+          <!-- <mat-form-field>
+            <input matInput  placeholder="Additional data" name="data" [(ngModel)]="data" />
+            <mat-hint>
+              If you want to register arbitrary data.
+            </mat-hint>
+          </mat-form-field> -->
+
+          <button mat-raised-button color="primary" type="submit" [disabled]="!sendform.form.valid">SEND</button>
+      </form>
+
+    </mat-card>
+  
+  </div>
+  
+  <div *ngIf="!isConnectedToBlockchain" id="notconnectedmessage">
+    You need to install a Dapp browser / app, or if using browser desktop, install <a href="https://metamask.io/">Metamask plugin</a>
+  </div>
+  

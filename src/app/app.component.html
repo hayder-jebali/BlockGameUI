@@ -1,0 +1,16 @@
+<app-navmenu [sidenav]="sidenav"></app-navmenu>
+<mat-sidenav-container id="sidenav-container">
+    <mat-sidenav #sidenav mode="over" id="sidenav-menu" closed>
+            <mat-list>
+                <!-- <mat-list-item> <a color="accent" class="menu-button" (click)="sidenav.close()" routerLink="/rank" mat-button>RANK</a> </mat-list-item>
+                <mat-list-item> <a color="accent" class="menu-button" (click)="sidenav.close()" routerLink="/register" mat-button>REGISTER</a> </mat-list-item> -->
+                <mat-list-item> <a class="menu-button" (click)="sidenav.close()" routerLink="/guide" mat-button><i class="material-icons">help</i> GUIDE</a> </mat-list-item>
+                <mat-list-item> <a class="menu-button" (click)="sidenav.close()" routerLink="/account" mat-button><i class="material-icons">account_balance_wallet</i> ACCOUNT</a> </mat-list-item>
+                <mat-list-item> <a class="menu-button" (click)="sidenav.close()" routerLink="/send" mat-button><i class="material-icons">send</i> SEND</a> </mat-list-item>
+            </mat-list>
+        <br>                
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
