@@ -320,12 +320,18 @@ export class WecoinService {
   }
 
   isConnectedToBlockchain(){
-    return web3 !== "undefined" ? true : false ;
+    return web3 !== "undefined" && this.getAccount() !== undefined ? true : false ;
   }
 
   transfer(walletAddress: string, amount: number, callback){
-    var tx = this.contract.transfer.sendTransaction(walletAddress,amount,function(err, txHash){
+    this.contract.transfer.sendTransaction(walletAddress,amount,function(err, txHash){
       callback(txHash);
+    });
+  }
+
+  watch_transfer(callback){
+    this.contract.Transfer.watch(function(err, result){
+      callback(err,result);
     });
   }
 }

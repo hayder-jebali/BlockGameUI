@@ -8,17 +8,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="/assets/web3.min.js"></script>
 </head>
 <body>
   <script type="text/javascript">
-      if (typeof web3 !== 'undefined') {
+      if (typeof web3 !== 'undefined' && typeof web3.currentProvider !== 'undefined') {
         web3 = new Web3(web3.currentProvider);
       } 
       else {
         // set the provider you want from Web3.providers
         // used it if you inject web3js manually. In our use case, not necessary since we want to retrieve user account without asking him.
-        // web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));      
-        web3 = 'undefined';
+        web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/rTk9DXpbYi291N9QIBNQ"));      
+        // web3 = 'undefined';
       }
       
   </script>

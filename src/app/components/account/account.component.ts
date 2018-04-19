@@ -20,17 +20,31 @@ export class AccountComponent implements OnInit {
     if(this.wecoinService.isConnectedToBlockchain()){
       this.isConnectedToBlockchain = true;
       this.walletAddress = this.wecoinService.getAccount();
-      this.wecoinService.getBalance( (balance: number) => {
-        this.ngZone.run( () => {
-          var affineBalance = balance / 10000;          
-          this.walletBalance = String(affineBalance);
-        });
-      });
+      this.getBalance();
+      this.watcherBalance();
     }
     else{
       this.isConnectedToBlockchain = false;
     }
 
+  }
+
+  getBalance(){
+    this.wecoinService.getBalance( (balance: number) => {
+      this.ngZone.run( () => {
+        var affineBalance = balance / 10000;          
+        this.walletBalance = String(affineBalance);
+      });
+    });
+  }
+
+  watcherBalance(){
+    //init watcher
+    this.wecoinService.watch_transfer(function(err, res){
+      console.log(err);
+      console.log(res);
+      this.getBalance();
+    });
   }
   
 
